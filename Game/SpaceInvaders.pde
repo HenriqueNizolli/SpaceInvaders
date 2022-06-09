@@ -82,6 +82,7 @@ void draw()
                 {
                     if(player_bullets.get(i).Hits(enemies.get(j)))
                     {
+                        track3.stop();
                         enemies.get(j).ToRemove = true;
                         player_bullets.get(i).ToRemove = true;
                         track3.play();
@@ -153,6 +154,7 @@ void keyPressed()
                 break;
                 
             case 32:
+                track2.stop();
                 PlayerBullets p_bullet = new PlayerBullets(player.GetX(), player.GetY());
                 player_bullets.add(p_bullet);
                 track2.play();
@@ -234,9 +236,9 @@ void GenerateEnemies(int dificult)
             {
                 EnemiesShip enemie = new EnemiesShip((j * 70 + 100), (50 + 50 * i));
                 enemies.add(enemie);
-                vel = 0.3;
             }
         }
+        vel = 0.3;
     }
     else
     {
@@ -249,15 +251,16 @@ void GenerateEnemies(int dificult)
                   EnemiesShip enemie = new EnemiesShip((j * 70 + 100), (50 + 50 * i));
                   enemies.add(enemie);
               }
-          } 
+          }
+          vel = 0.3;
       }
       else
       {
           for(int i = 0; i < 6; i++)
           {
-              for(int j = 0; j < 11; j++)
+              for(int j = 0; j < 10; j++)
               {
-                  EnemiesShip enemie = new EnemiesShip((j * 60 + 90), (50 + 50 * i));
+                  EnemiesShip enemie = new EnemiesShip((j * 70 + 90), (50 + 50 * i));
                   enemies.add(enemie);
               }
           } 
@@ -383,7 +386,7 @@ void MapEdge()
             enemies.get(i).SetYdir(enemies.get(i).GetY() + (40 * updown));
         }
     }
-    if((timer % 100) == 0)
+    if((timer % 70) == 0)
     {
         EnemiesShip aux = enemies.get((int)random(enemies.size()));
         EnemiesBullets e_bullet = new EnemiesBullets((int)aux.GetX(), aux.GetY());
@@ -418,4 +421,5 @@ void GameOver()
     fill(255, 0, 0);
     text("GAME", 250, 300);
     text("OVER", 250, 400);
+    op = -1;
 }

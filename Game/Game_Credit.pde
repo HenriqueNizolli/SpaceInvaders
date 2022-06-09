@@ -14,7 +14,7 @@ class Credit
         fill(255, 145, 0);
         text("Henrique", 315, 200);
         fill(209, 36, 209);
-        text("Maria Algusta", 275, 250);
+        text("Maria Augusta", 275, 250);
         fill(0, 255, 236);
         text("Eduarda", 315, 300);
         fill(0, 255, 61);
